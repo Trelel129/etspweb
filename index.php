@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
     <style type="text/css">
@@ -29,7 +29,7 @@
     <ul>
       <li><input type="button" value="<" onclick="goBack()"></li>
       <li><input type="button" value=">" onclick="goForward()"></li>
-      <li class="lalign"><a href="login.php">Login</a></li>
+      <!-- <li class="lalign"><a href="login.php">Login</a></li> -->
       <li class="lalign"><a href="logout.php">Log Out</a></li>
     </ul>
     <div class="wrapper">
