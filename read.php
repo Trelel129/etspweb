@@ -66,8 +66,8 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 </head>
 <body>
     <ul>
-      <li><input type="button" value="<" onclick="goBack()"></li>
-      <li><input type="button" value=">" onclick="goForward()"></li>
+        <li><input type="button" value="back" onclick="goBack()"></li>
+      <li><input type="button" value="next" onclick="goForward()"></li>
       <!-- <li class="lalign"><a href="login.php">Login</a></li> -->
       <li class="lalign"><a href="logout.php">Log Out</a></li>
     </ul>
