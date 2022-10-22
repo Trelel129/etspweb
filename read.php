@@ -54,8 +54,9 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 <head>
     <meta charset="UTF-8">
     <title>View Record</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    
     <style type="text/css">
         .wrapper{
             width: 500px;
@@ -64,6 +65,12 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     </style>
 </head>
 <body>
+    <ul>
+      <li><input type="button" value="<" onclick="goBack()"></li>
+      <li><input type="button" value=">" onclick="goForward()"></li>
+      <!-- <li class="lalign"><a href="login.php">Login</a></li> -->
+      <li class="lalign"><a href="logout.php">Log Out</a></li>
+    </ul>
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
