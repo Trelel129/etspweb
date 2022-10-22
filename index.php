@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="myScript.js"></script>
     <style type="text/css">
         .wrapper{
             width: 650px;
@@ -27,8 +28,8 @@
 </head>
 <body>
     <ul>
-        <li><input type="button" value="back" onclick="goBack()"></li>
-      <li><input type="button" value="next" onclick="goForward()"></li>
+        <li><a onclick="goBack()">Back</a></li>
+      <li><a onclick="goForward()">Next</a></li>
       <!-- <li class="lalign"><a href="login.php">Login</a></li> -->
       <li class="lalign"><a href="logout.php">Log Out</a></li>
     </ul>
