@@ -5,6 +5,7 @@
     <title>Error</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <script src="myScript.js"></script>
     <style type="text/css">
         .wrapper{
             width: 750px;

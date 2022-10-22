@@ -135,11 +135,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             margin: 0 auto;
         }
     </style>
+    <script src="myScript.js"></script>
 </head>
 <body>
     <ul>
-      <li><input type="button" value="<" onclick="goBack()"></li>
-      <li><input type="button" value=">" onclick="goForward()"></li>
+        <li><a onclick="goBack()">Back</a></li>
+      <li><a onclick="goForward()">Next</a></li>
       <!-- <li class="lalign"><a href="login.php">Login</a></li> -->
       <li class="lalign"><a href="logout.php">Log Out</a></li>
     </ul>
