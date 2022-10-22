@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
     <style type="text/css">
@@ -25,15 +26,31 @@
     </script>
 </head>
 <body>
+    <ul>
+      <li><input type="button" value="<" onclick="goBack()"></li>
+      <li><input type="button" value=">" onclick="goForward()"></li>
+      <li class="lalign"><a href="login.php">Login</a></li>
+      <li class="lalign"><a href="logout.php">Log Out</a></li>
+    </ul>
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
+                        <h2></h2>
+                        <h3></h3>
                         <h2 class="pull-left">Informasi Pegawai</h2>
                         <a href="create.php" class="btn btn-success pull-right">Tambah Baru</a>
                     </div>
                     <?php
+                    // Initialize the session
+session_start();
+ 
+// Check if the user is logged in, otherwise redirect to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
                     // Include config file
                     require_once "config.php";
 

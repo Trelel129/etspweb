@@ -81,6 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             margin: 0 auto;
         }
     </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="wrapper">

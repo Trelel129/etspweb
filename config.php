@@ -15,7 +15,7 @@ if($link === false){
 //create database once
 $sql = "CREATE DATABASE if not exists etspweb";
 if ($link->query($sql) === TRUE) {
-    echo "Database created successfully";
+    echo "";
     $link->select_db("etspweb");
   } else {
     echo "Error creating database: " . $link->error;
