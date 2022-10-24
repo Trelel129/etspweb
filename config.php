@@ -21,18 +21,7 @@ if ($link->query($sql) === TRUE) {
     echo "Error creating database: " . $link->error;
   }
 
-//create employees
-$sql_employees = "CREATE TABLE if not exists employees (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    address VARCHAR(255) NOT NULL,
-    salary INT(10) NOT NULL
-);";
-if (mysqli_query($link, $sql_employees)) {
-    echo "";
-  } else {
-    echo "Error creating table: " . mysqli_error($link);
-  }
+
 
 //create users
 $sql_users = "CREATE TABLE if not exists users (
@@ -43,6 +32,23 @@ $sql_users = "CREATE TABLE if not exists users (
 );";
 if (mysqli_query($link, $sql_users)) {
     echo "";
+  } else {
+    echo "Error creating table: " . mysqli_error($link);
+  }
+
+  //create games (was employee)
+$sql_games = "CREATE TABLE if not exists games (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  developer VARCHAR(100) NOT NULL, -- was address
+  years int(5) NOT NULL, -- was salary
+  desc VARCHAR(2000),
+  genre VARCHAR(200),
+  author_id INT(10) NOT NULL,
+  foreign key (author_id) from users(id)
+);";
+if (mysqli_query($link, $sql_games)) {
+  echo "";
   } else {
     echo "Error creating table: " . mysqli_error($link);
   }
