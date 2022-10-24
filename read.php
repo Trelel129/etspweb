@@ -93,7 +93,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                     </div>
                     <div class="form-group">
                         <label>Description</label>
-                        <p class="form-control-static"><?php echo $row["desc"]; ?></p>
+                        <p class="form-control-static"><?php echo $row["descr"]; ?></p>
                     </div>
                     <div class="form-group">
                         <label>Genres</label>

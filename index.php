@@ -58,7 +58,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     // Attempt select query execution
                     $sql = 
                     
-                    "SELECT id,name,developer,years,desc,genre,username FROM games, users where users.id=games.author_id";
+                    "SELECT id,name,developer,years,descr,genre,username FROM games, users where users.id=games.author_id";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
@@ -68,7 +68,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                         echo "<th>Name</th>";
                                         echo "<th>Developer</th>";
                                         echo "<th>Years</th>";
-                                        echo "<th>Desc</th>";
+                                        echo "<th>Descr</th>";
                                         echo "<th>Genre</th>";
                                         echo "<th>Username</th>";
                                         echo "<th>Pengaturan</th>";
@@ -81,7 +81,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                         echo "<td>" . $row['name'] . "</td>";
                                         echo "<td>" . $row['developer'] . "</td>";
                                         echo "<td>" . $row['years'] . "</td>";
-                                        echo "<td>" . $row['desc'] . "</td>";
+                                        echo "<td>" . $row['descr'] . "</td>";
                                         echo "<td>" . $row['genre'] . "</td>";
                                         echo "<td>" . $row['username'] . "</td>";
                                         echo "<td>";

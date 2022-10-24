@@ -3,7 +3,7 @@
 require_once "config.php";
 
 // Define variables and initialize with empty values
-$name = $developer = $years = $desc = $genre = "";
+$name = $developer = $years = $descr = $genre = "";
 $name_err = $developer_err = $years_err = $genre_err = "";
 
 // Processing form data when form is submitted
@@ -34,9 +34,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $years = $input_years;
     }
 
-    // Validate desc
-    $input_desc = trim($_POST["desc"]);
-    $desc = $input_desc;
+    // Validate descr
+    $input_descr = trim($_POST["descr"]);
+    $descr = $input_descr;
 
     // Validate genre
     $input_genre = trim($_POST["genre"]);
@@ -49,17 +49,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($name_err) && empty($developer_err) && empty($years_err) && empty($genre_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO games (name, developer, years, desc, genre) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO games (name, developer, years, descr, genre) VALUES (?, ?, ?, ?, ?)";
 
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_name, $param_developer, $param_years, $param_desc, $param_genre);
+            mysqli_stmt_bind_param($stmt, "sss", $param_name, $param_developer, $param_years, $param_descr, $param_genre);
 
             // Set parameters
             $param_name = $name;
             $param_developer = $developer;
             $param_years = $years;
-            $param_desc = $desc;
+            $param_descr = $descr;
             $param_genre = $genre;
 
             // Attempt to execute the prepared statement
@@ -128,8 +128,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="help-block"><?php echo $years_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>desc</label>
-                            <input type="text" name="desc" class="form-control" value="<?php echo $desc; ?>">
+                            <label>descr</label>
+                            <input type="text" name="descr" class="form-control" value="<?php echo $descr; ?>">
                         </div>
                         <div class="form-group <?php echo (!empty($genre_err)) ? 'has-error' : ''; ?>">
                             <label>genre</label>
