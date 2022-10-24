@@ -3,7 +3,7 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $developer = $years = $desc = $genre = "";
+$name = $developer = $years = $descr = $genre = "";
 $name_err = $developer_err = $years_err = $genre_err = "";
  
 // Processing form data when form is submitted
@@ -37,9 +37,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $years = $input_years;
     }
 
-    // Validate desc
-    $input_desc = trim($_POST["desc"]);
-    $desc = $input_desc;
+    // Validate descr
+    $input_descr = trim($_POST["descr"]);
+    $descr = $input_descr;
 
     // Validate genre
     $input_genre = trim($_POST["genre"]);
@@ -52,17 +52,17 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Check input errors before inserting in database
     if(empty($name_err) && empty($developer_err) && empty($years_err) && empty($genre_err)){
         // Prepare an update statement
-        $sql = "UPDATE games SET name=?, developer=?, years=?, desc=?, genre=? WHERE id=?";
+        $sql = "UPDATE games SET name=?, developer=?, years=?, descr=?, genre=? WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_developer, $param_years, $param_desc, $param_genre);
+            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_developer, $param_years, $param_descr, $param_genre);
             
             // Set parameters
             $param_name = $name;
             $param_developer = $developer;
             $param_years = $years;
-            $param_desc = $desc;
+            $param_descr = $descr;
             $param_genre = $genre;
             
             // Attempt to execute the prepared statement
@@ -109,7 +109,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $name = $row["name"];
                     $developer = $row["developer"];
                     $years = $row["years"];
-                    $desc = $row["desc"];
+                    $descr = $row["descr"];
                     $genre = $row["genre"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
@@ -182,8 +182,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="help-block"><?php echo $years_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>Desc</label>
-                            <input type="text" name="desc" class="form-control" value="<?php echo $desc; ?>">
+                            <label>Descr</label>
+                            <input type="text" name="descr" class="form-control" value="<?php echo $descr; ?>">
                         </div>
                         <div class="form-group <?php echo (!empty($genre)) ? 'has-error' : ''; ?>">
                             <label>Genres</label>
