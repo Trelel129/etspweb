@@ -3,8 +3,8 @@
 require_once "config.php";
 
 // Define variables and initialize with empty values
-$name = $developer = $years = $descr = $genre = "";
-$name_err = $developer_err = $years_err = $genre_err = "";
+$name = $developer = $years = $descr = $genre = $author_id = "";
+$name_err = $developer_err = $years_err = $genre_err = $author_err = "";
 
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -45,15 +45,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $genre = $input_genre;
     }
+    
+    // Validate author
+    $input_author = trim($_POST["author"]);
+    if(empty($input_author)){
+        $author_err = "Please enter your UID.";
+    }else if(1){
+        $author_id = $input_author;
+    }
 
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($developer_err) && empty($years_err) && empty($genre_err)){
+    if(empty($name_err) && empty($developer_err) && empty($years_err) && empty($genre_err) && empty($author_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO games (name, developer, years, descr, genre) VALUES (?, ?, ?, ?, ?)";
-
+        $sql = "INSERT INTO games (name, developer, years, descr, genre, author_id) VALUES (?, ?, ?, ?, ?, ?)";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_name, $param_developer, $param_years, $param_descr, $param_genre);
+            mysqli_stmt_bind_param($stmt, "ssissi", $param_name, $param_developer, $param_years, $param_descr, $param_genre, $param_author);
 
             // Set parameters
             $param_name = $name;
@@ -61,6 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_years = $years;
             $param_descr = $descr;
             $param_genre = $genre;
+            $param_author = $author_id;
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -137,8 +145,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="help-block"><?php echo $genre_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>author</label>
-                            <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
+                            <label>UID</label>
+                            <input type="text" name="author" class="form-control" value="<?php echo $author_id; ?>">
                         </div>
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="index.php" class="btn btn-default">Cancel</a>

@@ -30,7 +30,6 @@
     <ul>
         <li><a onclick="goBack()">Back</a></li>
       <li><a onclick="goForward()">Next</a></li>
-      <!-- <li class="lalign"><a href="login.php">Login</a></li> -->
       <li class="lalign"><a href="logout.php">Log Out</a></li>
     </ul>
     <div class="wrapper">
@@ -40,8 +39,8 @@
                     <div class="page-header clearfix">
                         <h2></h2>
                         <h3></h3>
-                        <h2 class="pull-left">Informasi Pegawai</h2>
-                        <a href="create.php" class="btn btn-success pull-right">Tambah Baru</a>
+                        <h2 class="pull-left">OurGameList</h2>
+                        <a href="create.php" class="btn btn-success pull-right">Add New</a>
                     </div>
                     <?php
                     // Initialize the session
@@ -57,8 +56,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
                     // Attempt select query execution
                     $sql = 
-                    
-                    "SELECT id,name,developer,years,descr,genre,username FROM games, users where users.id=games.author_id";
+                    "SELECT games.id,name,developer,years,descr,genre,users.username FROM games, users where author_id=users.id";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
@@ -71,7 +69,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                         echo "<th>Descr</th>";
                                         echo "<th>Genre</th>";
                                         echo "<th>Username</th>";
-                                        echo "<th>Pengaturan</th>";
+                                        echo "<th>Settings</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
@@ -101,7 +99,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     } else{
                         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                     }
-
+                    //showing UID
+                    $sql1=
+                    "SELECT id FROM users";
+                    if($result = mysqli_query($link, $sql1)){
+                        if(mysqli_num_rows($result) > 0){
+                            echo "Your UID is: ";
+                            while($row = mysqli_fetch_array($result)){
+                                echo $row['id'];
+                            }
+                        }
+                    }
                     // Close connection
                     mysqli_close($link);
                     ?>

@@ -56,7 +56,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_developer, $param_years, $param_descr, $param_genre);
+            mysqli_stmt_bind_param($stmt, "ssissi", $param_name, $param_developer, $param_years, $param_descr, $param_genre, $param_id);
             
             // Set parameters
             $param_name = $name;
@@ -64,6 +64,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             $param_years = $years;
             $param_descr = $descr;
             $param_genre = $genre;
+            $param_id = $id;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
