@@ -53,7 +53,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>View Record</title>
+    <title>View Games</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="myScript.js"></script>
@@ -77,19 +77,31 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>View Record</h1>
+                        <h1>View Games</h1>
                     </div>
                     <div class="form-group">
                         <label>Name</label>
                         <p class="form-control-static"><?php echo $row["name"]; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
-                        <p class="form-control-static"><?php echo $row["address"]; ?></p>
+                        <label>Developer</label>
+                        <p class="form-control-static"><?php echo $row["developer"]; ?></p>
                     </div>
                     <div class="form-group">
-                        <label>Salary</label>
-                        <p class="form-control-static"><?php echo $row["salary"]; ?></p>
+                        <label>Years</label>
+                        <p class="form-control-static"><?php echo $row["years"]; ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <p class="form-control-static"><?php echo $row["desc"]; ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Genres</label>
+                        <p class="form-control-static"><?php echo $row["genre"]; ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Author</label>
+                        <p class="form-control-static"><?php echo $row["username"]; ?></p>
                     </div>
                     <p><a href="index.php" class="btn btn-primary">Back</a></p>
                 </div>
