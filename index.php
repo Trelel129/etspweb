@@ -104,7 +104,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     }
                     //showing UID
                     echo "your UID is: ".$_SESSION["id"];
-                    
+                    echo "<p>Wanna reset password <a href='resetpassword.php'>Forgot password?</a>.</p>";
                     // Close connection
                     mysqli_close($link);
                     ?>
