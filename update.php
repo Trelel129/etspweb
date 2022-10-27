@@ -52,7 +52,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Check input errors before inserting in database
     if(empty($name_err) && empty($developer_err) && empty($years_err) && empty($genre_err)){
         // Prepare an update statement
-        $sql = "UPDATE games SET name=?, developer=?, years=?, descr=?, genre=? WHERE id=?";
+        $sql = "UPDATE games SET name=?, dev_id=?, years=?, descr=?, genre=? WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -108,7 +108,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     
                     // Retrieve individual field value
                     $name = $row["name"];
-                    $developer = $row["developer"];
+                    $developer = $row["dev_id"];
                     $years = $row["years"];
                     $descr = $row["descr"];
                     $genre = $row["genre"];

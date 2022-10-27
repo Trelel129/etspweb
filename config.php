@@ -37,7 +37,7 @@ if (mysqli_query($link, $sql_users)) {
     echo "Error creating table: " . mysqli_error($link);
   }
 
-  //create games (was employee)
+  //create games
 $sql_games = "CREATE TABLE if not exists games (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
@@ -54,12 +54,11 @@ if (mysqli_query($link, $sql_games)) {
     echo "Error creating table: " . mysqli_error($link);
   }
 
-//cara ngambil nama developer dari tabel games gimana ya?
+ // create developer
 $sql_developerdetail = "CREATE TABLE if not exists developer (
-  id INT NOT NULL PRIMARY KEY,
-  developer_id INT(100) NOT NULL,
-  devdescription VARCHAR(500) NOT NULL,
-  foreign key (developer_id) references games(id)
+  id varchar(100) NOT NULL PRIMARY KEY,
+  name varchar(100),
+  descr VARCHAR(500)
 )";
 if (mysqli_query($link, $sql_developerdetail)) {
   echo "";

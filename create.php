@@ -61,6 +61,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($name_err) && empty($developer_err) && empty($years_err) && empty($genre_err) && empty($author_err)){
         // Prepare an insert statement
+        // $sql1 = "INSERT INTO developer (name, id) VALUES (?, ?)";
+
+
         $sql = "INSERT INTO games (name, dev_id, years, descr, genre, author_id) VALUES (?, ?, ?, ?, ?, ?)";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters

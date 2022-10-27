@@ -77,7 +77,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                     echo "<tr>";
                                         echo "<td>" . $row['id'] . "</td>";
                                         echo "<td>" . $row['name'] . "</td>";
-                                        echo "<td>" . $row['developer'] . "</td>";
+                                        echo "<td>" . $row['dev_id'] . "</td>";
                                         echo "<td>" . $row['years'] . "</td>";
                                         echo "<td>" . $row['descr'] . "</td>";
                                         echo "<td>" . $row['genre'] . "</td>";
