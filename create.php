@@ -1,7 +1,11 @@
 <?php
 // Include config file
+session_start();
 require_once "config.php";
-
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
 // Define variables and initialize with empty values
 $name = $developer = $years = $descr = $genre = $author_id = "";
 $name_err = $developer_err = $years_err = $genre_err = $author_err = "";
@@ -57,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($name_err) && empty($developer_err) && empty($years_err) && empty($genre_err) && empty($author_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO games (name, developer, years, descr, genre, author_id) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO games (name, dev_id, years, descr, genre, author_id) VALUES (?, ?, ?, ?, ?, ?)";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "ssissi", $param_name, $param_developer, $param_years, $param_descr, $param_genre, $param_author);
@@ -79,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 echo "Something went wrong. Please try again later.";
             }
         }
-
+        
         // Close statement
         mysqli_stmt_close($stmt);
     }
@@ -147,10 +151,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="form-group">
                             <label>UID</label>
                             <input type="text" name="author" class="form-control" value="<?php echo $author_id; ?>">
+                            <?php
+                                //showing UID
+                                echo "your UID is: ".$_SESSION["id"];
+                            ?>
                         </div>
+                        
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="index.php" class="btn btn-default">Cancel</a>
                     </form>
+                    
                 </div>
             </div>
         </div>

@@ -56,7 +56,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
                     // Attempt select query execution
                     $sql = 
-                    "SELECT games.id,name,developer,years,descr,genre,users.username FROM games, users where author_id=users.id";
+                    "SELECT games.id,name,dev_id,years,descr,genre,users.username FROM games, users where author_id=users.id";
                     if($result = mysqli_query($link, $sql)){
                         if(mysqli_num_rows($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
@@ -102,13 +102,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                     }
                     //showing UID
-                    $sql1=
-                    "SELECT id FROM users";
-                    if($result = mysqli_query($link, $sql1)){
-                        if(mysqli_num_rows($result) > 0){
-                            echo "your UID is: ".$_SESSION["id"];
-                        }
-                    }
+                    echo "your UID is: ".$_SESSION["id"];
+                    
                     // Close connection
                     mysqli_close($link);
                     ?>
