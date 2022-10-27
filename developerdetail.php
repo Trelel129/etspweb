@@ -19,10 +19,13 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $name = $input_name;
     }
 
+    $input_descr = trim($_POST["descr"]);
+        $descr = $input_descr;
+
     // Check input errors before inserting in database
     if(empty($name_err)){
         // Prepare an update statement
-        $sql = "UPDATE developer SET name=?, descr=? WHERE id=?";
+        $sql = "INSERT INTO developer (id, name, descr) VALUES (?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
