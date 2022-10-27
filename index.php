@@ -86,6 +86,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                                             echo "<a href='read.php?id=". $row['id'] ."' title='View Games' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
                                             echo "<a href='update.php?id=". $row['id'] ."' title='Update Games' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
                                             echo "<a href='delete.php?id=". $row['id'] ."' title='Delete Games' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
+                                            echo "<a href='developerdetail.php?id=". $row['id'] ."' title='Developer Detail' data-toggle='tooltip'><span class='glyphicon glyphicon-user'></span></a>";
+                                            echo "<a href='authordetail.php?id=". $row['id'] ."' title='Author Detail' data-toggle='tooltip'><span class='glyphicon glyphicon-sunglasses'></span></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }
