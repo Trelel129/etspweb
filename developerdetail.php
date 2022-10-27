@@ -3,7 +3,7 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $id = $descr = "";
+$name = $descr = "";
 $name_err = "";
  
 // Processing form data when form is submitted
@@ -22,7 +22,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Check input errors before inserting in database
     if(empty($name_err)){
         // Prepare an update statement
-        $sql = "UPDATE developer SET id=?, name=?, descr=? WHERE id=?";
+        $sql = "UPDATE developer SET name=?, descr=? WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -106,7 +106,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update Developer Details</title>
+    <title>Update Developer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
@@ -129,9 +129,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h2>Update Games</h2>
+                        <h2>Update Developer</h2>
                     </div>
-                    <p>Please edit the input values and submit to update the games.</p>
+                    <p>Please edit the input values and submit to update the developer details.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                         <div class="form-group">
                             <label>Id</label>
