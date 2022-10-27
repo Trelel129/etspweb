@@ -106,10 +106,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     "SELECT id FROM users";
                     if($result = mysqli_query($link, $sql1)){
                         if(mysqli_num_rows($result) > 0){
-                            echo "Your UID is: ";
-                            while($row = mysqli_fetch_array($result)){
-                                echo $row['id'];
-                            }
+                            echo "your UID is: ".$_SESSION["id"];
                         }
                     }
                     // Close connection
